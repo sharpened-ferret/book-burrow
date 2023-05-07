@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\User;
 
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('posts.index', ['posts' => $posts]);
+        $users = User::all();
+        return view('users.index', ['users' => $users]);
     }
 
     /**
@@ -37,8 +37,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = Post::findOrFail($id);
-        return view('posts.show', ['post' => $post]);
+        $user = User::findOrFail($id);
+        return view('users.show', ['user' => $user]);
     }
 
     /**
