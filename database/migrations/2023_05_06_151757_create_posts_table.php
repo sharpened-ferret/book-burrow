@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->text('content');
             $table->date('post_date');
-            $table->bigInteger('author_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
             $table->bigInteger('book_id')->unsigned();
 
-            $table->foreign('author_id')->references('id')->on('users')
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('book_id')->references('id')->on('books')
                 ->onDelete('cascade')->onUpdate('cascade');

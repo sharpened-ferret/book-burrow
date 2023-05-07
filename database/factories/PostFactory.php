@@ -21,7 +21,7 @@ class PostFactory extends Factory
             'post_date' => fake()->date(),
             
             # generates random IDs in a range up to the number of users
-            'author_id' => fake()->numberBetween(1, \App\Models\User::count()),
+            'user_id' => fake()->numberBetween(1, \App\Models\User::count()),
             'book_id' => fake()->numberBetween(1, \App\Models\Book::count())
         ];
     }

@@ -17,7 +17,7 @@ class PostTableSeeder extends Seeder
         $p = new Post;
         $p->content = "This post is very useful";
         $p->post_date = Carbon::now();
-        $p->author_id = 1;
+        $p->user_id = 1;
         $p->book_id = 1;
         $p->save();
 

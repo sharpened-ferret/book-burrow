@@ -14,14 +14,13 @@
                     <p>{{$user->profile->bio}}</p>
                 </div>
             </div>
-            <hr>
-            {{-- @foreach ($post->comments as $comment)
+            @foreach ($user->posts as $post)
             <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg text-sm mt-4">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                <p>{{$comment->content}}<br>Author: {{$comment->author->name}}<br>{{$comment->post_date}}</p>
+                <p>{{$post->content}}<br>Book: {{$post->book->author}}<br>{{$post->post_date}}</p>
                 </div>
             </div>
-            @endforeach --}}
+            @endforeach
                 
         </div>
     </div>

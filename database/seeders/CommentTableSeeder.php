@@ -17,7 +17,7 @@ class CommentTableSeeder extends Seeder
         $c = new Comment;
         $c->content = "No it's not.";
         $c->post_date = Carbon::now();
-        $c->author_id = 1;
+        $c->user_id = 1;
         $c->post_id = 1;
         $c->save();
 

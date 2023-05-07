@@ -20,7 +20,7 @@ class CommentFactory extends Factory
             'content' => fake()->text(),
             'post_date' => fake()->date(),
             
-            'author_id' => fake()->numberBetween(1, \App\Models\User::count()),
+            'user_id' => fake()->numberBetween(1, \App\Models\User::count()),
             'post_id' => fake()->numberBetween(1, \App\Models\Post::count())
         ];
     }
