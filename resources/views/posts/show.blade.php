@@ -11,6 +11,9 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <p>{{$post->content}}<br>Author: {{$post->author->name}}<br>Book: {{$post->book->title}}<br>{{$post->post_date}}</p>
+                    @foreach ($post->comments as $comment)
+                        <p>{{$comment->author->name}}</p>
+                    @endforeach
                 </div>
             </div>
         </div>
