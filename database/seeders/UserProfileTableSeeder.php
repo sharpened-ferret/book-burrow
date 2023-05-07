@@ -15,7 +15,7 @@ class UserProfileTableSeeder extends Seeder
     {
         $up = new UserProfile;
         $up->has_image = false;
-        $up->bio = "How Are You Holding Up? Because I\'m A Potato.";
+        $up->bio = "How Are You Holding Up? Because I'm A Potato.";
         $up->save();
     }
 }
