@@ -18,7 +18,6 @@
                                 <p class="text-lg">{{$post->content}}</p>
                             </div>
                             <div class="flex basis-1" style="flex-direction: row; direction:rtl">
-                            {{-- <a href="{{route('posts.show', ['post_id' => $post->id])}}">Details</a> --}}
                                 <x-primary-button onclick="location.href='{{ route('posts.show', ['post_id' => $post->id]) }}'">{{ __('View Post') }}</x-primary-button>
                             </div>
                         </div>
