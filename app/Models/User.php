@@ -12,10 +12,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $attributes = [
-        'profile_id' => 1,
-    ];
-
     /**
      * The attributes that are mass assignable.
      *
@@ -25,7 +21,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'profile_id',
     ];
 
     /**
@@ -54,6 +49,6 @@ class User extends Authenticatable
 
     public function profile()
     {
-        return $this->belongsTo(UserProfile::class);
+        return $this->hasOne(UserProfile::class);
     }
 }

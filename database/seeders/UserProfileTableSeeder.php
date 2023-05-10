@@ -16,6 +16,9 @@ class UserProfileTableSeeder extends Seeder
         $up = new UserProfile;
         $up->has_image = false;
         $up->bio = "How Are You Holding Up? Because I'm A Potato.";
+        $up->user_id = 1;
         $up->save();
+
+        UserProfile::factory()->count(10)->create();
     }
 }

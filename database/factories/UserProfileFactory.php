@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UserProfile>
@@ -19,6 +20,7 @@ class UserProfileFactory extends Factory
         return [
             'bio' => fake()->sentence(),
             'has_image' => false,
+            'user_id' => User::factory()->create()->id,
         ];
     }
 }

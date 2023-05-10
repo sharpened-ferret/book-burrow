@@ -17,9 +17,6 @@ class UserTableSeeder extends Seeder
         $t->name = "Test";
         $t->email = "test@test.com";
         $t->password = bcrypt("password");
-        $t->profile_id = 1;
         $t->save();
-
-        User::factory()->count(10)->create();
     }
 }

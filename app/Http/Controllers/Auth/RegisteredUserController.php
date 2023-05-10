@@ -37,17 +37,18 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $userProfile = new UserProfile;
-        $userProfile->bio = "";
-        $userProfile->has_image = false;
-        $userProfile->save();
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'profile_id' => $userProfile->id,
         ]);
+
+        $userProfile = new UserProfile;
+        $userProfile->bio = "";
+        $userProfile->has_image = false;
+        $userProfile->user_id = $user->id;
+        $userProfile->save();
 
         event(new Registered($user));
 
