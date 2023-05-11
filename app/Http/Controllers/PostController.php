@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -29,7 +31,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $validatedData = $request->validate([
+            'content' => ['required', 'string', 'max:255'],
+            "book_id" => ['required', 'exists:books,id'],
+        ]);
+
+        $p = new Post;
+        $p->content = $validatedData['content'];
+        $p->book_id = $validatedData['book_id'];
+        $p->user_id = Auth::id();
+        $p->post_date = Carbon::now();
+        $p->save();
         dd($request);
+
     }
 
     /**
