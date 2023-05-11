@@ -13,11 +13,11 @@
             
                 <li>
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-4">
-                        <div class="flex p-6 text-gray-900 dark:text-gray-100" style="flex-direction: row; place-content:space-between; flex-wrap:wrap;">
-                            <div class="basis-full">
+                        <div class="flex p-6 text-gray-900 dark:text-gray-100 flex-row space-between flex-wrap justify-between">
+                            <div>
                                 <p class="text-lg">{{$user->name}}</p>
                             </div>
-                            <div class="flex basis-1">
+                            <div>
                                 <x-primary-button onclick="location.href='{{ route('users.show', ['id' => $user->id]) }}'">{{ __('View Profile') }}</x-primary-button>
                             </div>
                         </div>
