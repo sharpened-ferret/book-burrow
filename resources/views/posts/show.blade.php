@@ -17,7 +17,8 @@
             @foreach ($post->comments as $comment)
             <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg text-sm mt-4">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                <p>{{$comment->content}}<br>Author: {{$comment->user->name}}<br>{{$comment->post_date}}</p>
+                <p>{{$comment->content}}<br>Author: <a class="no-underline hover:underline" href="{{route('users.show', ['id' => $comment->user->id])}}">{{$comment->user->name}}</a>
+                <p>{{$comment->post_date}}</p>
                 </div>
             </div>
             @endforeach
