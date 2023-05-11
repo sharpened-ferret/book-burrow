@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\Book;
 use Carbon\Carbon;
 
 class PostController extends Controller
@@ -15,7 +16,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('posts.index', ['posts' => $posts]);
+        $books = Book::orderBy('title', 'asc')->get();
+        return view('posts.index', ['posts' => $posts, 'books' => $books]);
     }
 
     /**
@@ -23,7 +25,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $books = Book::orderBy('title', 'asc')->get();
+        return view('posts.create', ['books' => $books]);
     }
 
     /**
@@ -43,7 +46,10 @@ class PostController extends Controller
         $p->user_id = Auth::id();
         $p->post_date = Carbon::now();
         $p->save();
-        dd($request);
+
+        session()->flash('status', 'success');
+        
+        return redirect()->route("posts.index");
 
     }
 
