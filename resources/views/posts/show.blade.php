@@ -27,10 +27,10 @@
                 </div>
             </div>
             <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mt-6">Comments:</h1>
-            <livewire:comment-form :postID="$post->id" />
-            @foreach ($comments as $comment)
-                <livewire:comment-list :userID="$comment->user->id" :userName="$comment->user->name" :comment="$comment">
-            @endforeach
+            <livewire:comment-form :post="$post" />
+            {{-- @foreach ($comments as $comment) --}}
+                <livewire:comment-list :comments="$comments" :post_id="$post->id">
+            {{-- @endforeach --}}
                 
         </div>
     </div>

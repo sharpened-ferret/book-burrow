@@ -1,3 +1,5 @@
+<div>
+@foreach ($comments as $comment)
 <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg text-sm mt-4">
     <div class="p-6 text-gray-900 dark:text-gray-100">
     <p>{{$comment->content}}</p>
@@ -15,4 +17,6 @@
         </div>
     </div>
     </div>
+</div>
+@endforeach ($comments as $comment)
 </div>

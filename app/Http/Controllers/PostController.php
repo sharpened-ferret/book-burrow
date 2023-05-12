@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\Book;
 use Carbon\Carbon;
-use App\Notifications\PostInteraction;
 
 class PostController extends Controller
 {
@@ -62,9 +61,6 @@ class PostController extends Controller
     public function show(string $id)
     {
         $post = Post::findOrFail($id);
-
-        $message_data = ['user' => $post->user, 'interaction' => "viewed", 'post' => $post];
-        $post->user->notify(new PostInteraction($message_data));
         $comments = $post->comments->sortByDesc('id');
         return view('posts.show', ['post' => $post, 'comments' => $comments]);
     }
