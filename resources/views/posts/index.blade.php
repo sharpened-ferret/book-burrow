@@ -10,17 +10,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:post-form :books="$books"/>
 
-            <ul>
-                @foreach ($posts as $post)
-                
-                    <livewire:post-list :postContent="$post->content" :postID="$post->id"/>
-                
-                @endforeach
-            </ul>
-
-            <div class="mt-4">
-                {{ $posts->links() }}
-            </div>
+            <livewire:post-list :posts="$posts"/>
         </div>
     </div>
 

@@ -7,7 +7,6 @@ use App\Models\Comment;
 
 class CommentList extends Component
 {
-    // public $comments;
     public $post_id;
 
     protected $listeners = ['commentAdded' => 'render'];
