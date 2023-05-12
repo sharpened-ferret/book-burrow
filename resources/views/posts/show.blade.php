@@ -11,6 +11,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <p>{{$post->content}}<br>Author: {{$post->user->name}}<br>Book: {{$post->book->title}}<br>{{$post->post_date}}</p>
+                    <div><p>Likes {{$post->likedBy->count()}}</p></div>
                 </div>
             </div>
             <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mt-6">Comments:</h1>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class User extends Authenticatable
 {
@@ -55,5 +56,15 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function likedPosts(): MorphToMany
+    {
+        return $this->morphedByMany(Post::class, 'likeable');
+    }
+
+    public function likedComments(): MorphToMany
+    {
+        return $this->morphedByMany(Comment::class, 'likeable');
     }
 }

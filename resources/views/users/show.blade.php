@@ -30,7 +30,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 <p>{{$comment->content}}</p> 
                 <br>
-                <a class="no-underline hover:underline" href="{{route('posts.show', ['post_id' => $comment->post->id])}}">{{$comment->post->content}}</a><br>{{$post->post_date}}</p>
+                <a class="no-underline hover:underline" href="{{route('posts.show', ['post_id' => $comment->post->id])}}">{{$comment->post->content}}</a><br>{{$comment->post->post_date}}</p>
                 </div>
             </div>
             @endforeach

@@ -20,6 +20,7 @@ class PostTableSeeder extends Seeder
         $p->user_id = 1;
         $p->book_id = 1;
         $p->save();
+        $p->likedBy()->attach(2);
 
         Post::factory()->count(10)->create();
     }
