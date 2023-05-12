@@ -10,12 +10,11 @@ module.exports = {
     ],
 
     theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
-        },
-    },
-
+	fontFamily: {
+      		display: ['Source Serif Pro', 'Georgia', 'serif'],
+      		body: ['Synonym', 'system-ui', 'sans-serif'],
+    	},
+	
+	},
     plugins: [require('@tailwindcss/forms')],
 };
