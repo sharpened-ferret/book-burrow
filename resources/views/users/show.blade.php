@@ -24,7 +24,16 @@
                 </div>
             </div>
             @endforeach
-                
+            <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mt-6">Comments:</h1>
+            @foreach ($user->comments as $comment)
+            <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg text-sm mt-4">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <p>{{$comment->content}}</p> 
+                <br>
+                <a class="no-underline hover:underline" href="{{route('posts.show', ['post_id' => $comment->post->id])}}">{{$comment->post->content}}</a><br>{{$post->post_date}}</p>
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 
