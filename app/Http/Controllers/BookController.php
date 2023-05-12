@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Book;
 
 class BookController extends Controller
@@ -12,7 +13,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = DB::table('books')->simplePaginate(6);
         return view('books.index', ['books' => $books]);
     }
 

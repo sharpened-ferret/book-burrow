@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\Book;
 use Carbon\Carbon;
@@ -16,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = DB::table('posts')->simplePaginate(5);
         $books = Book::orderBy('title', 'asc')->get();
         return view('posts.index', ['posts' => $posts, 'books' => $books]);
     }
