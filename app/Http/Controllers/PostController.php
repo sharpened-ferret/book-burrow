@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Book;
 use Carbon\Carbon;
+use App\Notifications\PostInteraction;
 
 class PostController extends Controller
 {
@@ -59,6 +60,9 @@ class PostController extends Controller
     public function show(string $id)
     {
         $post = Post::findOrFail($id);
+
+        $message_data = ['interaction' => "viewed", 'post' => $post];
+        $post->user->notify(new PostInteraction($message_data));
         return view('posts.show', ['post' => $post]);
     }
 
