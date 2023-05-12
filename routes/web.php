@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BookController;
+use App\Http\Livewire\PostForm;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/test', PostForm::class)->middleware('auth', 'verified')->name('postform');
 
 Route::get('/books', [BookController::class, 'index'])->middleware('auth', 'verified')->name('books.index');
 Route::get('/books/{id}', [BookController::class, 'show'])->middleware(['auth', 'verified'])->name('books.show');

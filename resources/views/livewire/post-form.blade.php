@@ -1,3 +1,4 @@
+
 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-4">
     <div class="p-6 text-gray-900 dark:text-gray-100">
         <form method="POST" action="{{ route('posts.store') }}" class="bg-white dark:bg-gray-800 rounded px-8 pt-6 mb-4">
@@ -31,6 +32,5 @@
                 >{{ __('Review Posted') }}</p>
             @endif
         </form>
-        <livewire:post-form :books="$books"/>
     </div>
 </div>
