@@ -10,7 +10,6 @@ class PostForm extends Component
 
     public function render()
     {
-        // $this->books = $books;
         return view('livewire.post-form', );
     }
 }

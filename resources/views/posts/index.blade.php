@@ -9,10 +9,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <livewire:post-form :books="$books"/>
+
             <ul>
                 @foreach ($posts as $post)
                 
-                    <li>
+                    {{-- <li>
                         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-4">
                             <div class="p-6 text-gray-900 dark:text-gray-100">
                                 <div class="flex basis-0 w-256">
@@ -23,7 +24,8 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
+                    <livewire:post-list :postContent="$post->content" :postID="$post->id"/>
                 
                 @endforeach
             </ul>
