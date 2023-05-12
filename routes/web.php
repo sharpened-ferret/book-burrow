@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\BookController;
 use App\Http\Livewire\PostForm;
 use Illuminate\Support\Facades\Route;
@@ -26,8 +27,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/test', PostForm::class)->middleware('auth', 'verified')->name('postform');
-
 Route::get('/books', [BookController::class, 'index'])->middleware('auth', 'verified')->name('books.index');
 Route::get('/books/{id}', [BookController::class, 'show'])->middleware(['auth', 'verified'])->name('books.show');
 
@@ -40,6 +39,7 @@ Route::get('/posts/create', [PostController::class, 'create'])->middleware(['aut
 Route::post('/posts', [PostController::class, 'store'])->middleware(['auth', 'verified'])->name('posts.store');
 Route::get('/posts/{post_id}', [PostController::class, 'show'])->middleware(['auth', 'verified'])->name('posts.show');
 
+Route::post('/comments', [CommentController::class, 'store'])->middleware(['auth', 'verified'])->name('comments.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

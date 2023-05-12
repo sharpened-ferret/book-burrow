@@ -40,7 +40,7 @@ class PostController extends Controller
         
         $validatedData = $request->validate([
             'content' => ['required', 'string', 'max:255'],
-            "book_id" => ['required', 'exists:books,id'],
+            'book_id' => ['required', 'exists:books,id'],
         ]);
 
         $p = new Post;
@@ -65,7 +65,8 @@ class PostController extends Controller
 
         $message_data = ['user' => $post->user, 'interaction' => "viewed", 'post' => $post];
         $post->user->notify(new PostInteraction($message_data));
-        return view('posts.show', ['post' => $post]);
+        $comments = $post->comments->sortByDesc('id');
+        return view('posts.show', ['post' => $post, 'comments' => $comments]);
     }
 
     /**

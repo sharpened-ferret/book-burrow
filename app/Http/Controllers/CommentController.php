@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Comment;
+use Carbon\Carbon;
 
 class CommentController extends Controller
 {
@@ -29,7 +31,19 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'content' => ['required', 'string', 'max:255'],
+            'post_id' => ['required', 'exists:posts,id'],
+        ]);
+
+        $c = new Comment;
+        $c->content = $validatedData['content'];
+        $c->user_id = Auth::id();
+        $c->post_id = $validatedData['post_id'];
+        $c->post_date = Carbon::now();
+        $c->save();
+
+        session()->flash('status', 'success');
     }
 
     /**
