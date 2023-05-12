@@ -63,7 +63,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        $message_data = ['interaction' => "viewed", 'post' => $post];
+        $message_data = ['user' => $post->user, 'interaction' => "viewed", 'post' => $post];
         $post->user->notify(new PostInteraction($message_data));
         return view('posts.show', ['post' => $post]);
     }

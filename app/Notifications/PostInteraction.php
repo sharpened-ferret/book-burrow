@@ -40,7 +40,7 @@ class PostInteraction extends Notification implements ShouldQueue
         return (new MailMessage)
                     ->line('A user has '.$this->message_data['interaction'].' your post: '.$post->content)
                     ->action('View', url('/posts/'.$post->id))
-                    ->line('Thank you for using our application!');
+                    ->line('Thank you for using Book Burrow '.$this->message_data['user']->name.', keep reading!');
     }
 
     /**

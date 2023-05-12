@@ -29,6 +29,7 @@ Route::get('/books', [BookController::class, 'index'])->middleware('auth', 'veri
 Route::get('/books/{id}', [BookController::class, 'show'])->middleware(['auth', 'verified'])->name('books.show');
 
 Route::get('/users', [UserController::class, 'index'])->middleware('auth', 'verified')->name('users.index');
+Route::get('/users/{id}', [UserController::class, 'edit'])->middleware(['auth', 'verified'])->name('users.edit');
 Route::get('/users/{id}', [UserController::class, 'show'])->middleware(['auth', 'verified'])->name('users.show');
 
 Route::get('/posts', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('posts.index');
