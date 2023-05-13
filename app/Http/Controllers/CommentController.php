@@ -59,7 +59,8 @@ class CommentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -67,7 +68,29 @@ class CommentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        $request->request->add(['user_id' =>  Auth::id()]);
+        $request->request->add(['comment_user_id' => $comment->user_id]);
+
+        if (Auth::user()->is_admin) {
+            $validated = $request->validate([
+                'content' => 'required|max:255',
+            ]);
+        }
+        else {
+            $validated = $request->validate([
+                'content' => 'required|max:255',
+                'user_id' => 'required|same:comment_user_id',
+            ],
+            [
+                'user_id.same' => 'Permission Denied: You are not the owner or Admin',
+            ]);
+        }
+
+        $comment->content = $request['content'];
+        $comment->save();
+        session()->flash('status', 'success');
+        return redirect()->route("posts.show", $comment->post->id);
     }
 
     /**
