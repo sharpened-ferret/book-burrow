@@ -13,7 +13,10 @@
                     <div class="flex flex-row">
                         <div class="basis-11/12">
                             <p>{{$post->content}}</p>
-                            <p>Book: {{$post->book->title}}</p>
+                            <p>Book: <a class="no-underline hover:underline" href="{{route('books.show', ['id' => $post->book->id])}}">{{$post->book->title}}</a></p>
+                            @isset ($post->image) 
+                            <img src="{{ asset('storage/images/posts/'.$post->image) }}" class="h-auto max-w-full" alt="Post Image"/>
+                            @endisset
                         </div>
                         @include('posts.partials.modify')
                     </div>

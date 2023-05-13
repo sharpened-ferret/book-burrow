@@ -20,6 +20,7 @@ class PostForm extends Component
     protected $rules = [
         'content' => 'required|string|max:255',
         'book_id' => 'required|exists:books,id',
+        'image' => 'mimes:jpeg,png,jpg,gif,svg',
     ];
 
     protected $messages = [
@@ -44,7 +45,7 @@ class PostForm extends Component
 
         if ($this->image){
             $this->image->storeAs('images/posts', $p->id.'.'.$this->image->extension());
-            $p->has_image = true;
+            $p->image = $p->id.".".$this->image->extension();
             $p->save();
         }
         

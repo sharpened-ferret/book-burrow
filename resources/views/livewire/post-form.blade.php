@@ -25,6 +25,7 @@
                 <x-input-label for="image" :value="__('Upload Image')" />
                 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="image" type="file" wire:model="image">
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF.</p>
+                <x-input-error :messages="$errors->get('image')" class="mt-2" />
             </div>
             <x-primary-button type="submit">{{ __('Submit') }}</x-primary-button>
             <x-secondary-button onclick="location.href='{{ route('posts.index') }}'">{{ __('Cancel') }}</x-primary-button>
