@@ -9,7 +9,9 @@
                 <p class="mt-2"><a class="no-underline hover:underline" href="{{route('users.show', ['id' => $comment->id])}}">{{$comment->user->name}}</a>
                 <p>{{$comment->post_date}}</p>
             </div>
+            @auth
             <livewire:comment-like :comment="$comment"/>
+            @endauth
         </div>
         </div>
     </div>

@@ -24,7 +24,9 @@
                             <a class="no-underline hover:underline" href="{{route('books.show', ['id' => $post->book->id])}}">{{$post->book->title}}</a> by {{$post->book->author}}</p>
                             <p>{{$post->post_date}}</p>
                         </div>
+                        @auth
                         <livewire:post-like :post="$post"/>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -40,7 +42,9 @@
                             <a class="no-underline hover:underline" href="{{route('posts.show', ['post_id' => $comment->post->id])}}">{{$comment->post->content}}</a>
                             <p>{{$comment->post->post_date}}</p>
                         </div>
+                        @auth
                         <livewire:comment-like :comment="$comment"/>
+                        @endauth
                     </div>
                 </div>
             </div>

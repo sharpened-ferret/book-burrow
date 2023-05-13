@@ -17,12 +17,16 @@
                             <a class="no-underline hover:underline" href="{{route('users.show', ['id' => $post->user->id])}}">{{$post->user->name}}</a>
                             <p>{{$post->post_date}}</p>
                         </div>
+                        @auth
                         <livewire:post-like :post="$post"/>
+                        @endauth
                     </div>
                 </div>
             </div>
             <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mt-6">Comments:</h1>
+            @auth
             <livewire:comment-form :post="$post" />
+            @endauth
             <livewire:comment-list :comments="$comments" :post_id="$post->id">
                 
         </div>

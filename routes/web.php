@@ -20,24 +20,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
 
-Route::get('/books', [BookController::class, 'index'])->middleware('auth', 'verified')->name('books.index');
-Route::get('/books/{id}', [BookController::class, 'show'])->middleware(['auth', 'verified'])->name('books.show');
+Route::get('/books', [BookController::class, 'index'])->name('books.index');
+Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
 
-Route::get('/users', [UserController::class, 'index'])->middleware('auth', 'verified')->name('users.index');
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/users/{id}', [UserController::class, 'edit'])->middleware(['auth', 'verified'])->name('users.edit');
-Route::get('/users/{id}', [UserController::class, 'show'])->middleware(['auth', 'verified'])->name('users.show');
+Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
-Route::get('/posts', [PostController::class, 'index'])->middleware(['auth', 'verified'])->name('posts.index');
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class, 'create'])->middleware(['auth', 'verified'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->middleware(['auth', 'verified'])->name('posts.store');
-Route::get('/posts/{post_id}', [PostController::class, 'show'])->middleware(['auth', 'verified'])->name('posts.show');
+Route::get('/posts/{post_id}', [PostController::class, 'show'])->name('posts.show');
 
 Route::post('/comments', [CommentController::class, 'store'])->middleware(['auth', 'verified'])->name('comments.store');
 

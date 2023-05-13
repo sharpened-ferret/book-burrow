@@ -8,7 +8,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @auth
             <livewire:post-form :books="$books"/>
+            @endauth
 
             <livewire:post-list :posts="$posts"/>
         </div>

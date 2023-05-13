@@ -26,7 +26,9 @@
                             <a class="no-underline hover:underline" href="{{route('users.show', ['id' => $post->user->id])}}">{{$post->user->name}}</a>
                             <p>{{$post->post_date}}</p>
                         </div>
+                        @auth
                         <livewire:post-like :post="$post"/>
+                        @endauth
                     </div>
                 </div>
             </div>
