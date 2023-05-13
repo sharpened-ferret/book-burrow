@@ -23,6 +23,7 @@ class UserTableSeeder extends Seeder
         $a->name = "admin";
         $a->email = "admin@test.com";
         $a->password = bcrypt("admin");
+        $a->is_admin = true;
         $a->save();
     }
 }

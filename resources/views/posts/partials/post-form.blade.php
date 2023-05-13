@@ -31,6 +31,5 @@
                 >{{ __('Review Posted') }}</p>
             @endif
         </form>
-        <livewire:post-form :books="$books"/>
     </div>
 </div>

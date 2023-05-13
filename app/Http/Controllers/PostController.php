@@ -69,7 +69,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -77,7 +78,29 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $request->request->add(['user_id' =>  Auth::id()]);
+        $request->request->add(['post_user_id' => $post->user_id]);
+
+        if (Auth::user()->is_admin) {
+            $validated = $request->validate([
+                'content' => 'required|max:255',
+            ]);
+        }
+        else {
+            $validated = $request->validate([
+                'content' => 'required|max:255',
+                'user_id' => 'required|same:post_user_id',
+            ],
+            [
+                'user_id.same' => 'Permission Denied: You are not the owner or Admin',
+            ]);
+        }
+
+        $post->content = $request['content'];
+        $post->save();
+        session()->flash('status', 'success');
+        return redirect()->route("posts.show", $post->id);
     }
 
     /**
