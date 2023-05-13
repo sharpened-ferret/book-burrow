@@ -6,6 +6,9 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex basis-0 w-256">
                         <p class="text-lg">{{$post->content}}</p>
+                        @if ($post->has_image) 
+                            <img src="{{ asset('storage/images/posts/'.$post->id.".jpg") }}" />
+                        @endif
                     </div>
                     <div class="flex basis-1" style="flex-direction: row; direction:rtl">
                         <x-primary-button onclick="location.href='{{ route('posts.show', ['post_id' => $post->id]) }}'">{{ __('View Post') }}</x-primary-button>

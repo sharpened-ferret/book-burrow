@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
             $table->bigInteger('book_id')->unsigned();
+            $table->boolean('has_image')->default(false);
 
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');

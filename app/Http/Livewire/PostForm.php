@@ -42,8 +42,15 @@ class PostForm extends Component
         $p->post_date = Carbon::now();
         $p->save();
 
+        if ($this->image){
+            $this->image->storeAs('images/posts', $p->id.'.'.$this->image->extension());
+            $p->has_image = true;
+            $p->save();
+        }
+        
+
         $this->emit('postAdded');
         session()->flash('status', 'success');
-        $this->reset();
+        $this->content="";
     }
 }
