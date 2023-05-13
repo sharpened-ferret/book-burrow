@@ -9,7 +9,7 @@
                 <textarea id="content" rows="4" wire:model="content" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your review here..."></textarea>
                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
             </div>
-            <div class="mt-4 mb-4">
+            <div class="mt-4 mb-2">
                 <x-input-label for="book_id" :value="__('Book')" />
                 <select id="book_id" wire:model="book_id" selected="" class="block appearance-none w-full focus:dark:bg-gray-600 dark:border-gray-700 dark:bg-gray-900 bg-gray-200 border border-gray-200 dark:text-white text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                     <option value="" selected>Select a book</option>
@@ -20,6 +20,11 @@
                     @endforeach
                 </select>
                 <x-input-error :messages="$errors->get('book_id')" class="mt-2" />
+            </div>
+            <div mb-4>
+                <x-input-label for="image" :value="__('Upload Image')" />
+                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="image" type="file" wire:model="image">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF.</p>
             </div>
             <x-primary-button type="submit">{{ __('Submit') }}</x-primary-button>
             <x-secondary-button onclick="location.href='{{ route('posts.index') }}'">{{ __('Cancel') }}</x-primary-button>

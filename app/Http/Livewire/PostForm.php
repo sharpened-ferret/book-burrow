@@ -3,15 +3,19 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Post;
 
 class PostForm extends Component
 {
+    use WithFileUploads;
+    
     public $books;
     public $content;
     public $book_id;
+    public $image;
 
     protected $rules = [
         'content' => 'required|string|max:255',

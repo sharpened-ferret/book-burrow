@@ -18,5 +18,5 @@
         </div>
         </div>
     </div>
-    @endforeach ($comments as $comment)
+    @endforeach
 </div>
