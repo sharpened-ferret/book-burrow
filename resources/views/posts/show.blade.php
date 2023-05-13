@@ -10,8 +10,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <p>{{$post->content}}</p>
-                    <p>Book: {{$post->book->title}}</p>
+                    <div class="flex flex-row">
+                        <div class="basis-11/12">
+                            <p>{{$post->content}}</p>
+                            <p>Book: {{$post->book->title}}</p>
+                        </div>
+                        @include('posts.partials.delete')
+                    </div>
                     <div class="mt-2 flex flex-row">
                         <div class="basis-11/12">
                             <a class="no-underline hover:underline" href="{{route('users.show', ['id' => $post->user->id])}}">{{$post->user->name}}</a>
