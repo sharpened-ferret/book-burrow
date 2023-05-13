@@ -40,6 +40,7 @@ Route::post('/posts', [PostController::class, 'store'])->middleware(['auth', 've
 Route::get('/posts/{post_id}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
 Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 Route::post('/comments', [CommentController::class, 'store'])->middleware(['auth', 'verified'])->name('comments.store');
 Route::get('/comments/{id}/edit', [CommentController::class, 'edit'])->name('comments.edit');
