@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
-            $table->boolean('has_image');
+            $table->string('image')->nullable();
             $table->text('bio');
             $table->bigInteger('user_id')->unsigned();
             $table->timestamps();

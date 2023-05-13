@@ -55,8 +55,15 @@ class UserProfileController extends Controller
         $userProfile = UserProfile::findOrFail($id);
         $validated = $request->validate([
             'bio' => 'required|max:255',
+            'image' => 'mimes:jpeg,png,jpg,gif,svg',
         ]);
         $userProfile->bio = $request['bio'];
+
+        if ($request['image']){
+            $request['image']->storeAs('images/users', $userProfile->id.'.'.$request['image']->extension());
+            $userProfile->image = $userProfile->id.".".$request['image']->extension();
+        }
+
         $userProfile->save();
         session()->flash('status', 'success');
         return redirect()->route("profile.edit");

@@ -12,6 +12,9 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <p class="text-xl">{{$user->name}}</p>
                     <p>{{$user->profile->bio}}</p>
+                    @isset($user->profile->image)
+                        <img src="{{ asset('storage/images/users/'.$user->profile->image) }}" class="h-auto max-w-full" alt="Current profile image"/>
+                    @endisset
                 </div>
             </div>
             <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mt-6">Reviews:</h1>

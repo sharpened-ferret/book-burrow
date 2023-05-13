@@ -19,7 +19,6 @@ class UserProfileFactory extends Factory
     {
         return [
             'bio' => fake()->sentence(),
-            'has_image' => false,
             'user_id' => User::factory()->create()->id,
         ];
     }

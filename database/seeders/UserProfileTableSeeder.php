@@ -14,13 +14,11 @@ class UserProfileTableSeeder extends Seeder
     public function run(): void
     {
         $up = new UserProfile;
-        $up->has_image = false;
         $up->bio = "How Are You Holding Up? Because I'm A Potato.";
         $up->user_id = 1;
         $up->save();
 
         $up = new UserProfile;
-        $up->has_image = false;
         $up->bio = "Unlimited Power.";
         $up->user_id = 2;
         $up->save();
