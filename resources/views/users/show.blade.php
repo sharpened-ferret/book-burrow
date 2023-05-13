@@ -37,7 +37,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <p>{{$comment->content}}</p> 
                 
-                    <div class="flex flex-row justify-start">
+                    <div class="flex flex-row justify-start mt-2">
                         <div class="basis-11/12">
                             <a class="no-underline hover:underline" href="{{route('posts.show', ['post_id' => $comment->post->id])}}">{{$comment->post->content}}</a>
                             <p>{{$comment->post->post_date}}</p>

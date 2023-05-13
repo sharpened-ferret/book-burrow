@@ -19,6 +19,12 @@ class UserProfileTableSeeder extends Seeder
         $up->user_id = 1;
         $up->save();
 
+        $up = new UserProfile;
+        $up->has_image = false;
+        $up->bio = "Unlimited Power.";
+        $up->user_id = 2;
+        $up->save();
+
         UserProfile::factory()->count(10)->create();
     }
 }
