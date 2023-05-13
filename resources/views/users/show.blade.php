@@ -18,9 +18,14 @@
             @foreach ($user->posts as $post)
             <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg text-sm mt-4">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                <p>{{$post->content}}</p> 
-                <br>
-                <a class="no-underline hover:underline" href="{{route('books.show', ['id' => $post->book->id])}}">{{$post->book->title}}</a> by {{$post->book->author}}<br>{{$post->post_date}}</p>
+                    <p>{{$post->content}}</p> 
+                    <div class="mt-2 flex flex-row">
+                        <div class="basis-11/12">
+                            <a class="no-underline hover:underline" href="{{route('books.show', ['id' => $post->book->id])}}">{{$post->book->title}}</a> by {{$post->book->author}}</p>
+                            <p>{{$post->post_date}}</p>
+                        </div>
+                        <livewire:post-like :post="$post"/>
+                    </div>
                 </div>
             </div>
             @endforeach
@@ -28,9 +33,15 @@
             @foreach ($user->comments as $comment)
             <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg text-sm mt-4">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                <p>{{$comment->content}}</p> 
-                <br>
-                <a class="no-underline hover:underline" href="{{route('posts.show', ['post_id' => $comment->post->id])}}">{{$comment->post->content}}</a><br>{{$comment->post->post_date}}</p>
+                    <p>{{$comment->content}}</p> 
+                
+                    <div class="flex flex-row justify-start">
+                        <div class="basis-11/12">
+                            <a class="no-underline hover:underline" href="{{route('posts.show', ['post_id' => $comment->post->id])}}">{{$comment->post->content}}</a>
+                            <p>{{$comment->post->post_date}}</p>
+                        </div>
+                        <livewire:comment-like :comment="$comment"/>
+                    </div>
                 </div>
             </div>
             @endforeach
