@@ -44,5 +44,6 @@ class PostForm extends Component
 
         $this->emit('postAdded');
         session()->flash('status', 'success');
+        $this->reset();
     }
 }

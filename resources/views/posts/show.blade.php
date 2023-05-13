@@ -15,7 +15,7 @@
                             <p>{{$post->content}}</p>
                             <p>Book: {{$post->book->title}}</p>
                         </div>
-                        @include('posts.partials.delete')
+                        @include('posts.partials.modify')
                     </div>
                     <div class="mt-2 flex flex-row">
                         <div class="basis-11/12">

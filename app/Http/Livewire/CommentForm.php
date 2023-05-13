@@ -37,5 +37,6 @@ class CommentForm extends Component
         session()->flash('status', 'success');
         $message_data = ['user' => $this->post->user, 'interaction' => "commented on", 'post' => $this->post];
         $this->post->user->notify(new PostInteraction($message_data));
+        $this->reset();
     }
 }

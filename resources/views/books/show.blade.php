@@ -20,7 +20,7 @@
             @foreach ($book->posts as $post)
             <div class="bg-white dark:bg-gray-700 overflow-hidden shadow-sm sm:rounded-lg text-sm mt-4">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <p>{{$post->content}}</p>
+                    <a class="no-underline hover:underline" href="{{route('posts.show', ['post_id' => $post->id])}}">{{$post->content}}</a>
                     <div class="mt-2 flex flex-row justify-start">
                         <div class="basis-11/12">
                             <a class="no-underline hover:underline" href="{{route('users.show', ['id' => $post->user->id])}}">{{$post->user->name}}</a>
