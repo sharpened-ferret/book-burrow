@@ -52,7 +52,14 @@ class UserProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $userProfile = UserProfile::findOrFail($id);
+        $validated = $request->validate([
+            'bio' => 'required|max:255',
+        ]);
+        $userProfile->bio = $request['bio'];
+        $userProfile->save();
+        session()->flash('status', 'success');
+        return redirect()->route("profile.edit");
     }
 
     /**
