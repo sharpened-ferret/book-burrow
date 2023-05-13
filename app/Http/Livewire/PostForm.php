@@ -16,6 +16,7 @@ class PostForm extends Component
     public $content;
     public $book_id;
     public $image;
+    public $iteration;
 
     protected $rules = [
         'content' => 'required|string|max:255',
@@ -52,6 +53,10 @@ class PostForm extends Component
 
         $this->emit('postAdded');
         session()->flash('status', 'success');
+
+        // Reset Form fields after submission
         $this->content="";
+        $this->image = null;
+        $this->iteration++;
     }
 }
