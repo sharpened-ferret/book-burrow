@@ -40,7 +40,7 @@ class BookController extends Controller
 
         if ($bookData != null) {
             $book = new Book;
-            $book->isbn = $bookData['identifiers']['isbn_10'][0];
+            $book->isbn = $validatedData['isbn'];
             $book->title = $bookData['title'];
             $book->author = $bookData['authors'][0]['name'];
             $book->save();
@@ -48,7 +48,7 @@ class BookController extends Controller
             session()->flash('status', 'success');
             return redirect()->route("books.index");
         } else {
-            return redirect('books/create')
+            return redirect('books/index')
                         ->withErrors(["isbn" => "Invalid ISBN"])
                         ->withInput();
         }
