@@ -40,9 +40,7 @@ class PostForm extends Component
     public function submit()
     {
         $this->validate();
-
-        // dd($this->tag_ids);
-
+        
         $p = new Post;
         $p->content = $this->content;
         $p->book_id = $this->book_id;

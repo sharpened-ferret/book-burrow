@@ -29,7 +29,8 @@ class PostController extends Controller
     public function create()
     {
         $books = Book::orderBy('title', 'asc')->get();
-        return view('posts.create', ['books' => $books]);
+        $tags = Tag::all();
+        return view('posts.create', ['books' => $books, 'tags' => $tags]);
     }
 
     /**

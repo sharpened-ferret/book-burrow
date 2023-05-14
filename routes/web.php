@@ -21,6 +21,7 @@ use App\Services\BookFetch;
 |
 */
 
+// Configures service container to access the OpenLibrary API
 app()->singleton('App\Services\BookFetch', function($app) {
     return new BookFetch("https://openlibrary.org/api/books/", "&jscmd=data");
 });
