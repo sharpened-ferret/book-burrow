@@ -8,6 +8,7 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\BookController;
 use App\Http\Livewire\PostForm;
 use Illuminate\Support\Facades\Route;
+use App\Services\BookFetch;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+app()->singleton('App\Services\BookFetch', function($app) {
+    return new BookFetch("https://openlibrary.org/api/books/", "&jscmd=data");
+});
+
+
 Route::get('/', function () {
     return view('dashboard');
 });
@@ -29,6 +35,8 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
+Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
+Route::post('/books', [BookController::class, 'store'])->middleware(['auth', 'verified', 'permissions'])->name('books.store');
 Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');

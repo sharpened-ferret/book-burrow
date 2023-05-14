@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('isbn');
             $table->text('title');
             $table->text('author');
-            $table->date('release_date');
 
             $table->timestamps();
         });

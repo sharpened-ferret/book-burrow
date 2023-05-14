@@ -20,7 +20,6 @@ class BookFactory extends Factory
             'isbn' => fake()->isbn10(),
             'title' => fake()->sentence(),
             'author' => fake()->name(),
-            'release_date' => fake()->date()
         ];
     }
 }

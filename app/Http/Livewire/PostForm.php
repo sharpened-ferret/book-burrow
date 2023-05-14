@@ -21,7 +21,7 @@ class PostForm extends Component
     protected $rules = [
         'content' => 'required|string|max:255',
         'book_id' => 'required|exists:books,id',
-        'image' => 'mimes:jpeg,png,jpg,gif,svg',
+        'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg',
     ];
 
     protected $messages = [
@@ -56,7 +56,6 @@ class PostForm extends Component
 
         // Reset Form fields after submission
         $this->content="";
-        $this->image = null;
         $this->iteration++;
     }
 }
