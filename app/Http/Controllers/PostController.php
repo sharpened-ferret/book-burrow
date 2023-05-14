@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Models\Book;
+use App\Models\Tag;
 use Carbon\Carbon;
 
 class PostController extends Controller
@@ -18,7 +19,8 @@ class PostController extends Controller
     {
         $posts = DB::table('posts')->orderBy('id', 'desc')->simplePaginate(5);
         $books = Book::orderBy('title', 'asc')->get();
-        return view('posts.index', ['posts' => $posts, 'books' => $books]);
+        $tags = Tag::all();
+        return view('posts.index', ['posts' => $posts, 'books' => $books, 'tags' => $tags]);
     }
 
     /**

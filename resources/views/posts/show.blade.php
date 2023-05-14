@@ -30,6 +30,11 @@
                         @endauth
                     </div>
                 </div>
+                <div class="flex flex-row mt-2 mb-2 ml-2">
+                    @foreach ($post->tags as $tag)
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{$tag->label}}</span>
+                    @endforeach
+                </div>
             </div>
             <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight mt-6">Comments:</h1>
             @auth

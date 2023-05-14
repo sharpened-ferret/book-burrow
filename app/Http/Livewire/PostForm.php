@@ -7,14 +7,17 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Post;
+use App\Models\Tag;
 
 class PostForm extends Component
 {
     use WithFileUploads;
     
     public $books;
+    public $tags;
     public $content;
     public $book_id;
+    public $tag_ids;
     public $image;
     public $iteration;
 
@@ -22,6 +25,7 @@ class PostForm extends Component
         'content' => 'required|string|max:255',
         'book_id' => 'required|exists:books,id',
         'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg',
+        'tag_ids' => 'nullable|array'
     ];
 
     protected $messages = [
@@ -37,12 +41,23 @@ class PostForm extends Component
     {
         $this->validate();
 
+        // dd($this->tag_ids);
+
         $p = new Post;
         $p->content = $this->content;
         $p->book_id = $this->book_id;
         $p->user_id = Auth::id();
         $p->post_date = Carbon::now();
         $p->save();
+
+        foreach ($this->tag_ids as $tag_id){
+            $t = Tag::find($tag_id);
+
+            if ($t != null) {
+                $p->tags()->attach($t->id);
+            }
+            
+        }
 
         if ($this->image){
             $this->image->storeAs('images/posts', $p->id.'.'.$this->image->extension());
